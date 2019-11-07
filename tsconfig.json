@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "moduleResolution": "node",
+        "target": "es6",
+        "module": "commonjs",
+        "lib": ["es2018"],
+        "strict": false,
+        "sourceMap": true,
+        "declaration": true,
+        "allowSyntheticDefaultImports": true,
+        "experimentalDecorators": true,
+        "jsx": "react",
+        "esModuleInterop": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": false,
+        "skipLibCheck": true,
+        "noEmitOnError": true,
+        "importHelpers": true
+    },
+    "include": ["./"],
+    "exclude": ["node_modules", "domain.template.ts"]
+}

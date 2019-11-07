@@ -1,0 +1,27 @@
+{
+  "name": "@tinkoff/invest-types-generator",
+  "version": "0.0.6",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "prettier": "^1.18.2",
+    "typescript": "^3.1.6"
+  },
+  "dependencies": {
+    "@tinkoff/utils": "^2.1.1",
+    "@types/node": "^12.12.6",
+    "debug": "^4.1.1",
+    "handlebars": "^4.4.2",
+    "mustache": "^3.1.0",
+    "superagent": "^5.1.0",
+    "yamljs": "^0.3.0"
+  },
+  "license" : "Apache-2.0",
+  "bin": {
+    "swagger-types-generator": "index.js"
+  }
+}

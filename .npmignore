@@ -1,0 +1,4 @@
+*.ts
+*.tsx
+!*.d.ts
+tsconfig.json
