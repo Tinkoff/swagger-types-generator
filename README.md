@@ -1,4 +1,4 @@
-# swagger-type-generator
+# swagger-types-generator
 
 Генератор typescript типов по swagger-схемам
 
