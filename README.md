@@ -5,10 +5,10 @@
 ## Установка
 ```
 # yarn
-yarn add --dev @tinkoff/swagger-type-generator
+yarn add --dev @tinkoff/swagger-types-generator
 
 # npm
-npm install --save-dev @tinkoff/swagger-type-generator
+npm install --save-dev @tinkoff/swagger-types-generator
 ```
 
 ## Пример
