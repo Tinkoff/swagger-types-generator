@@ -6,7 +6,7 @@ import YAML from 'yamljs';
 import superAgent from 'superagent';
 import debug from 'debug';
 import { Config } from './types';
-import { processingProperties, processingAllOf } from './utils/parse';
+import { processingProperties, processingAllOf, processingEnum } from './utils/parse';
 import { generateTypes, generatingActionsTypes } from './utils/generate';
 import map from './utils/map';
 import getTypeAlias from './utils/getTypeAlias';
@@ -90,10 +90,16 @@ function parseSchemas(schemas: { schema: any; namespace?: string }[]) {
 
         types[namespace] = {
             ...types[namespace],
-            ...map((sourceName, { properties: sourceProperties, required, allOf }: any) => {
+            ...map((sourceName, { properties: sourceProperties, required, allOf, enum: enumValues }: any) => {
                 if (allOf) {
                     return processingAllOf({
                         allOf,
+                    });
+                }
+
+                if (enumValues) {
+                    return processingEnum({
+                        enumValues,
                     });
                 }
 

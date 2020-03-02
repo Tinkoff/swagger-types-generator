@@ -97,6 +97,16 @@ export const processingAllOf = ({ allOf }: ProcessingAllOfPropertiesArguments) =
     }, []),
 });
 
+interface ProcessingEnumArguments {
+    enumValues: string[]
+}
+
+export const enumSymbol = Symbol('enum');
+
+export const processingEnum = ({ enumValues }: ProcessingEnumArguments) => ({
+    [enumSymbol]: enumValues,
+});
+
 export const processingProperties = ({
     sourceName,
     sourceProperties = {},

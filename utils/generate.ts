@@ -7,7 +7,7 @@ import getTypeAlias from './getTypeAlias';
 import { Config } from '../types';
 import Mustache from 'mustache';
 import dirTree from './dirTree';
-import { allOfTypesSymbol } from './parse';
+import { allOfTypesSymbol, enumSymbol } from './parse';
 
 export function generateTypes({ types, config }: { types: Record<string, any>; config: Config }) {
     const { projectDir } = config;
@@ -91,6 +91,7 @@ function escapeNumbers(name) {
 
 function stringifyType(name, keys, isInnerType = false) {
     const allOfTypes = keys[allOfTypesSymbol];
+    const enumType = keys[enumSymbol];
 
     if (allOfTypes) {
         const allOfTypesString = allOfTypes.join(' & ');
@@ -100,6 +101,11 @@ function stringifyType(name, keys, isInnerType = false) {
         }
 
         return `export type ${name} = ${allOfTypesString};`;
+    }
+
+    if (enumType) {
+        const enumValues = enumType.map(e => `'${e}'`).join(' | ');
+        return `export type ${name} = ${enumValues};`;
     }
 
     const body = Object.values(
