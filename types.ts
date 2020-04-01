@@ -15,4 +15,5 @@ export interface Config {
     projectDir: string;
     isCachingEnable?: boolean;
     isActionsEnable?: boolean;
+    outputFilename?: string;
 }
