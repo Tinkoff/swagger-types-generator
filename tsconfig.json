@@ -18,5 +18,5 @@
         "importHelpers": true
     },
     "include": ["./"],
-    "exclude": ["node_modules", "domain.template.ts"]
+    "exclude": ["node_modules", "domain.template.ts", "spec"]
 }

@@ -6,7 +6,7 @@ import getTypeAlias from './getTypeAlias';
 import { Config } from '../types';
 import Mustache from 'mustache';
 import dirTree from './dirTree';
-import { allOfTypesSymbol } from './parse';
+import { allOfTypesSymbol, EnumSymbol } from './parse';
 
 export function generateTypes({ types, config }: { types: Record<string, any>; config: Config }) {
   const { projectDir, outputFilename = 'types/domain.d.ts' } = config;
@@ -102,10 +102,8 @@ function escapeNumbers(name) {
 }
 
 function stringifyType(name, keys, isInnerType = false) {
-  const allOfTypes = keys[allOfTypesSymbol];
-
-  if (allOfTypes) {
-    const allOfTypesString = allOfTypes.join(' & ');
+  if (keys[allOfTypesSymbol]) {
+    const allOfTypesString = keys[allOfTypesSymbol].join(' & ');
 
     if (isInnerType) {
       return `${name} = ${allOfTypesString};`;
@@ -113,6 +111,15 @@ function stringifyType(name, keys, isInnerType = false) {
 
     return `export type ${name} = ${allOfTypesString};`;
   }
+
+  if (keys[EnumSymbol]) {
+    if (isInnerType) {
+      return `${name} = ${keys[EnumSymbol]};`;
+    }
+
+    return `export type ${name} = ${keys[EnumSymbol]};`;
+  }
+
 
   const body = Object.values(
     map((prop, type) => {

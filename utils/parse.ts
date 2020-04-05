@@ -86,6 +86,7 @@ interface ProcessingAllOfPropertiesArguments {
 }
 
 export const allOfTypesSymbol = Symbol('allOfTypes');
+export const EnumSymbol = Symbol('enum');
 
 export const processingAllOf = ({ allOf }: ProcessingAllOfPropertiesArguments) => ({
     [allOfTypesSymbol]: allOf.reduce((result, item) => {
@@ -95,6 +96,10 @@ export const processingAllOf = ({ allOf }: ProcessingAllOfPropertiesArguments) =
 
         return result;
     }, []),
+});
+
+export const processingEnum = (values: string[]) => ({
+    [EnumSymbol]: values.map(x => `"${x}"`).join(' | '),
 });
 
 export const processingProperties = ({
