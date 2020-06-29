@@ -1,6 +1,6 @@
 {
   "name": "@tinkoff/swagger-types-generator",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "main": "index.js",
   "scripts": {
     "build": "tsc",
@@ -15,6 +15,7 @@
   "dependencies": {
     "@tinkoff/utils": "^2.1.1",
     "@types/node": "^12.12.6",
+    "chalk": "^4.1.0",
     "debug": "^4.1.1",
     "handlebars": "^4.7.6",
     "mustache": "^3.1.0",
